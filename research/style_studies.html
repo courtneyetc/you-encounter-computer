@@ -24,7 +24,7 @@
 		<script> 
 		$(function() {
 		    $('#term').terminal(function(command, term) {
-				switch (command.toUpperCase()) {
+				switch (command) {
 				    case 'SET ALIGHT':
 						term.echo('SET ALIGHT has no effect...');
 						break;
