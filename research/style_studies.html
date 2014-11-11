@@ -1,13 +1,56 @@
 
 <html>
 	<head>
+		<!--- 
+			don't hate me 4 putting code inline
+			i'll fix it l8r 
+		-->
 		<style type="text/css">
 		body {
-			font-family: Courier New, Courier, mono;
-			color: #FFFFFF;
+		    font-family: FreeMono, monospace;
+		    color: #aaa;
 			background-color: #181818;
+			font-size: 12px;
+		    line-height: 14px;
 		}s		
 		</style>
+		<script src="js/dterm.js"></script>
+		<script src="js/jquery-1.7.1.min.js"></script>
+		<script src="js/jquery.terminal-0.8.8.js"></script>
+		<script src="js/jquery.terminal-min.js"></script>
+		<script src="js/jquery.terminal-src.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/jquery.terminal.css">
+		
+		<script> 
+		$(function() {
+		    $('#term').terminal(function(command, term) {
+				switch (command.toUpperCase()) {
+				    case 'SET ALIGHT':
+						term.echo('SET ALIGHT has no effect...');
+						break;
+					case 'DEBUG':
+						term.echo('DEBUG does not work');
+						break;
+					default:
+						break; //i feel filty	
+				}
+		    }, {
+		        prompt: '>',
+		        greetings: 'DEBUG or SET ALIGHT?',
+		        keypress: function(e, term) {
+		            term.insert(String.fromCharCode(e.which).toUpperCase());
+		            return false;
+		        },
+		        width: 370,
+		        height: 190
+		    });
+
+		});
+
+		</script>
+	
+		
+	</head>	
 	<body>
 
 		<pre>
@@ -22,6 +65,13 @@ MM.         MM.      ,MP M  YM.P'  MM    MM        MM       M       MM        MM
   `"bmmmd'    `"bmmd"' .JML. `'  .JMML..JMML.       `bmmmmd"'     .JMML.    .JMMmmmmMMM .JMML. .JMM.
 
 		</pre>
+		<div id="term" class="terminal" style="width: 170px; height: 180px">
+			<div class="terminal-output">
+				<div>
+				</div>
+			</div>
+		</div>
+
 
 	</body>
 </html>
