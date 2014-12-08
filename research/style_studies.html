@@ -1,39 +1,59 @@
 
 <html>
 	<head>
-		<!--- 
+		<!---
 			don't hate me 4 putting code inline
-			i'll fix it l8r 
+			i'll fix it l8r
 		-->
 		<style type="text/css">
 		body {
 		    font-family: FreeMono, monospace;
 		    color: #aaa;
 			background-color: #181818;
-			font-size: 12px;
+			font-size: 14px;
 		    line-height: 14px;
-		}s		
+		}s
 		</style>
-		<script src="js/dterm.js"></script>
 		<script src="js/jquery-1.7.1.min.js"></script>
 		<script src="js/jquery.terminal-0.8.8.js"></script>
 		<script src="js/jquery.terminal-min.js"></script>
 		<script src="js/jquery.terminal-src.js"></script>
+		<script src="js/dterm.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/jquery.terminal.css">
-		
-		<script> 
+
+		<script>
+		var tree = {
+			'SET ALIGHT': {
+				"description": 'SET ALIGHT has no effect...',
+				"steps": [
+					{
+						"description": "Step 2",
+						"steps": []
+					}
+				]
+			}
+		};
+
 		$(function() {
 		    $('#term').terminal(function(command, term) {
-				switch (command) {
-				    case 'SET ALIGHT':
-						term.echo('SET ALIGHT has no effect...');
-						break;
-					case 'DEBUG':
-						term.echo('DEBUG does not work');
-						break;
-					default:
-						break; //i feel filty	
-				}
+
+					var node = tree[command];
+					if (node == undefined) {
+						return;
+					}
+
+					var output = node["description"];
+
+					term.echo(output);
+
+					var steps = node["steps"];
+
+					for (var i in steps) {
+						var step = steps[i];
+						var path = step["description"];
+						term.echo(path);
+
+					}
 		    }, {
 		        prompt: '>',
 		        greetings: 'DEBUG or SET ALIGHT?',
@@ -44,30 +64,30 @@
 		        width: 370,
 		        height: 190
 		    });
-
 		});
 
 		</script>
-	
-		
-	</head>	
+
+
+	</head>
 	<body>
+		<div id="game_content">
+			<pre>
+	     Y O U   E N C O U N T E R . . .
 
-		<pre>
-     Y O U   E N C O U N T E R . . .
+	  .g8"""bgd   .g8""8q. `7MMM.     ,MMF'`7MM"""Mq.`7MMF'   `7MF'MMP""MM""YMM `7MM"""YMM  `7MM"""Mq.
+	.dP'     `M .dP'    `YM. MMMb    dPMM    MM   `MM. MM       M  P'   MM   `7   MM    `7    MM   `MM.
+	dM'       ` dM'      `MM M YM   ,M MM    MM   ,M9  MM       M       MM        MM   d      MM   ,M9
+	MM          MM        MM M  Mb  M' MM    MMmmdM9   MM       M       MM        MMmmMM      MMmmdM9
+	MM.         MM.      ,MP M  YM.P'  MM    MM        MM       M       MM        MM   Y  ,   MM  YM.
+	`Mb.     ,' `Mb.    ,dP' M  `YM'   MM    MM        YM.     ,M       MM        MM     ,M   MM   `Mb.
+	  `"bmmmd'    `"bmmd"' .JML. `'  .JMML..JMML.       `bmmmmd"'     .JMML.    .JMMmmmmMMM .JMML. .JMM.
 
-  .g8"""bgd   .g8""8q. `7MMM.     ,MMF'`7MM"""Mq.`7MMF'   `7MF'MMP""MM""YMM `7MM"""YMM  `7MM"""Mq.  
-.dP'     `M .dP'    `YM. MMMb    dPMM    MM   `MM. MM       M  P'   MM   `7   MM    `7    MM   `MM. 
-dM'       ` dM'      `MM M YM   ,M MM    MM   ,M9  MM       M       MM        MM   d      MM   ,M9  
-MM          MM        MM M  Mb  M' MM    MMmmdM9   MM       M       MM        MMmmMM      MMmmdM9   
-MM.         MM.      ,MP M  YM.P'  MM    MM        MM       M       MM        MM   Y  ,   MM  YM.   
-`Mb.     ,' `Mb.    ,dP' M  `YM'   MM    MM        YM.     ,M       MM        MM     ,M   MM   `Mb. 
-  `"bmmmd'    `"bmmd"' .JML. `'  .JMML..JMML.       `bmmmmd"'     .JMML.    .JMMmmmmMMM .JMML. .JMM.
-
-		</pre>
-		<div id="term" class="terminal" style="width: 170px; height: 180px">
-			<div class="terminal-output">
-				<div>
+			</pre>
+			<div id="term" class="terminal" style="width: 170px; height: 180px">
+				<div class="terminal-output">
+					<div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -75,4 +95,3 @@ MM.         MM.      ,MP M  YM.P'  MM    MM        MM       M       MM        MM
 
 	</body>
 </html>
-
