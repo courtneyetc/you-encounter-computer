@@ -24,14 +24,24 @@
 		<script>
 		var tree = {
 			"SET ALIGHT": {
-				"description": "SET ALIGHT does not work",
+				"description": "SET ALIGHT has no effect",
 				"steps": {
 						"DEBUG": {
-							"description": "DEBUG has no effect. DRINK ALCOHOL",
-							"steps": {}
+							"description": "DEBUG has no effect.",
+							"steps": {
+								"DRINK ALCOHOL": {
+									"description": "You are SAD. You look in a MIRROR",
+									"steps": {
+										"OK": {
+											"description": "You are COMPUTER",
+											"steps": {}
+										}
+									}
+								}
+							}
 						},
 						"DRINK ALCOHOL": {
-								"description": "You are SAD. You look in a mirror",
+								"description": "You are SAD. You look in a MIRROR",
 								"steps": {
 									"OK": {
 										"description": "You are COMPUTER",
@@ -40,7 +50,36 @@
 								}
 							}
 						}
+					},
+				"DEBUG": {
+					"description": "DEBUG has no effect.",
+					"steps": {
+						"DRINK ALCOHOL": {
+							"description": "You are SAD. You look in a MIRROR",
+							"steps": {
+								"OK": {
+									"description": "You are COMPUTER",
+								"steps": {}
+								}
+							}
+						},
+						"SET ALIGHT": {
+							"description": "SET ALIGHT does not work",
+							"steps": {
+								"DRINK ALCOHOL": {
+									"description": "You are SAD. You look in a MIRROR",
+									"steps": {
+										"OK": {
+											"description": 'You are COMPUTER',
+											"steps": {}
+										}
+									}
+								}
+							}
+						}
 					}
+
+				}
 				};
 
 		$(function() {
