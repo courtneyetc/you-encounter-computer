@@ -15,6 +15,11 @@
   margin-top: 20px;
 }
 
+a {
+  color:#00ffff;
+  text-decoration:none;
+}
+
 pre {
   font-family: Monaco;
   color:#00ffff;
