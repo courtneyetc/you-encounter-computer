@@ -23,15 +23,26 @@
 
 		<script>
 		var tree = {
-			'SET ALIGHT': {
-				"description": 'SET ALIGHT has no effect...',
+			"SET ALIGHT": {
+				"description": "SET ALIGHT does not work",
 				"steps": [
 					{
-						"description": "Step 2",
-						"steps": []
+						"description": "DEBUG or DRINK ALCOHOL?",
+						"steps": ["DEBUG","DRINK ALCOHOL"]
 					}
 				]
-			}
+			},
+			"DEBUG": {
+				"description": "DEBUG has no effect. DRINK ALCOHOL",
+				"steps": ["DRINK ALCOHOL"]
+			},
+
+				"DRINK ALCOHOL": {
+				"description": "You are SAD",
+				"steps": []
+
+		}
+
 		};
 
 		$(function() {
@@ -48,8 +59,9 @@
 
 					var steps = node["steps"];
 
-					for (var i in steps) {
+					for (var i in steps) { //get the description out of each item in the step array
 						var step = steps[i];
+						steps = step;
 						var path = step["description"];
 						term.echo(path);
 
