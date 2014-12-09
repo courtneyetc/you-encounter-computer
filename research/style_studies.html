@@ -31,8 +31,13 @@
 							"steps": {}
 						},
 						"DRINK ALCOHOL": {
-								"description": "You are SAD",
-								"steps": {}
+								"description": "You are SAD. You look in a mirror",
+								"steps": {
+									"OK": {
+										"description": "You are COMPUTER",
+										"steps": {}
+									}
+								}
 							}
 						}
 					}
@@ -60,7 +65,7 @@
 					tree = steps;
 		    }, {
 		        prompt: '>',
-		        greetings: 'DEBUG or SET ALIGHT?',
+		        greetings: 'COMPUTER does not work. DEBUG or SET ALIGHT?',
 		        keypress: function(e, term) {
 		            term.insert(String.fromCharCode(e.which).toUpperCase());
 		            return false;
