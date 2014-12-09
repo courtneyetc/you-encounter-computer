@@ -8,6 +8,11 @@
 .terminal .terminal-output .format, .cmd .format,
 .cmd .prompt, .cmd .prompt div, .terminal .terminal-output div div{
     display: inline-block;
+    margin-left:60px;
+}
+
+#game_content {
+  margin-top: 60px;
 }
 .cmd .clipboard {
     position: absolute;
