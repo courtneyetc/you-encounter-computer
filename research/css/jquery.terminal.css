@@ -8,11 +8,17 @@
 .terminal .terminal-output .format, .cmd .format,
 .cmd .prompt, .cmd .prompt div, .terminal .terminal-output div div{
     display: inline-block;
-    margin-left:60px;
+    margin-left:20px;
 }
 
 #game_content {
-  margin-top: 60px;
+  margin-top: 20px;
+}
+
+pre {
+  font-family: Monaco;
+  color:#00ffff;
+  margin: -1em 0px
 }
 .cmd .clipboard {
     position: absolute;
@@ -85,18 +91,18 @@
 }
 .terminal .terminal-output div div, .cmd .prompt {
     display: block;
-    line-height: 14px;
+    line-height: 15px;
     height: auto;
 }
 .cmd .prompt {
     float: left;
 }
 .terminal, .cmd {
-    font-family: FreeMono, monospace;
+    font-family: Monaco, FreeMono, monospace;
     color: #aaa;
     background-color: #181818;
-    font-size: 14px;
-    line-height: 14px;
+    font-size: 15px;
+    line-height: 15px;
 }
 .terminal-output > div {
     /*padding-top: 3px;*/
