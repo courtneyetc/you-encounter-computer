@@ -43,22 +43,21 @@
 
 					var node = tree[command];
 					if (node == undefined) {
+						// Don't do anything if it's not a valid command
 						return;
 					}
 
-					var output = node["description"];
-
-					term.echo(output);
+					var description = node["description"];
+					term.echo(description);
 
 					var steps = node["steps"];
 
 					// get the description out of each item in the step array
-					for (var key in steps) {
-						term.echo(key);
-
-						var step = steps[key];
-						tree = steps;
+					for (var possibleAction in steps) {
+						term.echo(possibleAction);
 					}
+
+					tree = steps;
 		    }, {
 		        prompt: '>',
 		        greetings: 'DEBUG or SET ALIGHT?',
