@@ -20,6 +20,12 @@ pre {
   color:#00ffff;
   margin: -1em 0px
 }
+
+a {
+  color:#00ffff;
+  text-decoration:none;
+}
+
 .cmd .clipboard {
     position: absolute;
     bottom: 0;
