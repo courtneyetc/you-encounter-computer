@@ -25,25 +25,18 @@
 		var tree = {
 			"SET ALIGHT": {
 				"description": "SET ALIGHT does not work",
-				"steps": [
-					{
-						"description": "DEBUG or DRINK ALCOHOL?",
-						"steps": ["DEBUG","DRINK ALCOHOL"]
+				"steps": {
+						"DEBUG": {
+							"description": "DEBUG has no effect. DRINK ALCOHOL",
+							"steps": []
+						},
+						"DRINK ALCOHOL": {
+								"description": "You are SAD",
+								"steps": []
+							}
+						}
 					}
-				]
-			},
-			"DEBUG": {
-				"description": "DEBUG has no effect. DRINK ALCOHOL",
-				"steps": ["DRINK ALCOHOL"]
-			},
-
-				"DRINK ALCOHOL": {
-				"description": "You are SAD",
-				"steps": []
-
-		}
-
-		};
+				};
 
 		$(function() {
 		    $('#term').terminal(function(command, term) {
@@ -58,13 +51,13 @@
 					term.echo(output);
 
 					var steps = node["steps"];
+					
+					// get the description out of each item in the step array
+					for (var key in steps) {
+						term.echo(key);
 
-					for (var i in steps) { //get the description out of each item in the step array
-						var step = steps[i];
-						steps = step;
-						var path = step["description"];
-						term.echo(path);
-
+						var step = steps[key];
+						tree = steps;
 					}
 		    }, {
 		        prompt: '>',
